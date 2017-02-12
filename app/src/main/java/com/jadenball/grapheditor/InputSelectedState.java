@@ -9,9 +9,6 @@ public class InputSelectedState implements InputState {
 
 
     class gListener extends GestureDetector.SimpleOnGestureListener {
-        public boolean onDown(MotionEvent e){
-            return true;
-        }
         public void onLongPress(MotionEvent event){
             super.onLongPress(event);
         }
