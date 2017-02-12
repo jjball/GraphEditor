@@ -21,6 +21,7 @@ public class InputLongPressState implements InputState {
                 }
                 c.longSelected = null;
                 c.selected = null;
+                c.state = new InputReadyState();
                 c.notifySubscribers();
                 break;
 
