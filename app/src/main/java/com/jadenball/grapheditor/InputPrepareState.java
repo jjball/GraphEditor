@@ -16,8 +16,8 @@ public class InputPrepareState implements InputState {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                // change the inputstate to a move event
-                c.state = new InputMoveState();
+                // change the inputstate back to ready, don't create a circle
+                c.state = new InputReadyState();
                 break;
 
 
