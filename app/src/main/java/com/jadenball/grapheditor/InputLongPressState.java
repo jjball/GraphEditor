@@ -5,10 +5,18 @@ import android.view.MotionEvent;
 
 public class InputLongPressState implements InputState {
 
+    boolean edgeAlreadyCreated = false;
+    Edge e;
+
     @Override
     public void handleTouch(GraphViewController c, MotionEvent event) {
-        Edge e = c.model.edges.get(c.model.edges.size() - 1);
-        //e.getV2().setX(42);
+
+        if(!edgeAlreadyCreated) {
+            c.model.createEdge(event.getX(), event.getX(), event.getY(), event.getY());
+            c.longSelected = c.selected;
+            edgeAlreadyCreated = true;
+        }
+        e = c.model.edges.get(c.model.edges.size() - 1);
 
         switch(event.getAction()) {
             case MotionEvent.ACTION_UP:
@@ -25,7 +33,7 @@ public class InputLongPressState implements InputState {
                 c.notifySubscribers();
                 break;
 
-            default:
+            case MotionEvent.ACTION_MOVE:
                 c.model.moveEdge(e, e.getX1(), e.getY1(), event.getX(), event.getY());
                 c.notifySubscribers();
                 break;

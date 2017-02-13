@@ -6,12 +6,13 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class GraphViewController implements View.OnTouchListener{
+public class GraphViewController implements View.OnTouchListener, View.OnLongClickListener{
     GraphModel model;
     Vertex selected = null;
     Vertex longSelected = null;
     //Edge selectedEdge = null;
     ArrayList<View> subscribers;
+    boolean isMoveState = false;
     InputState state;
 
     public GraphViewController(){
@@ -30,7 +31,7 @@ public class GraphViewController implements View.OnTouchListener{
     public boolean onTouch(View v, MotionEvent event){
         //state = new InputReadyState();
         state.handleTouch(this, event);
-        return true;
+        return false;
     }
 
 
@@ -41,4 +42,15 @@ public class GraphViewController implements View.OnTouchListener{
     }
 
 
+    @Override
+    public boolean onLongClick(View view) {
+        // changing the state to the long pressed state
+
+        if(!isMoveState) {
+            state = new InputLongPressState();
+        }
+        
+        notifySubscribers();
+        return true;
+    }
 }

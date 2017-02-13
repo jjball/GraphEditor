@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         // set up event handling
         gView.setOnTouchListener(controller);
+        gView.setOnLongClickListener(controller);
 
         setContentView(gView);
 

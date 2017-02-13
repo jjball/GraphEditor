@@ -13,6 +13,7 @@ public class InputMoveState implements InputState {
             case MotionEvent.ACTION_UP:
                 c.state = new InputReadyState();
                 c.selected = null;
+                c.isMoveState = false;
                 c.notifySubscribers();
                 break;
 
