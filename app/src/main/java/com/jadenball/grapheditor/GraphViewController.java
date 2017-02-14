@@ -58,6 +58,7 @@ public class GraphViewController implements View.OnTouchListener, View.OnLongCli
         // changing the state to the long pressed state
 
         if(!isMoveState && selected != null) {
+            longSelected = selected;
             state = new InputLongPressState();
         }
 
