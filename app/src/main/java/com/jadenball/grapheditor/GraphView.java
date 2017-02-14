@@ -12,6 +12,10 @@ public class GraphView extends View {
     Paint myPaint;
     GraphModel model;
     GraphViewController controller;
+    private float viewWidth;
+    private float viewHeight;
+    private float viewPosX;
+    private float viewPosY;
 
     public GraphView(Context c) {
         super(c);
@@ -19,6 +23,11 @@ public class GraphView extends View {
         myPaint.setColor(Color.BLUE);
         myPaint.setStrokeWidth(5);
         this.setBackgroundColor(Color.GRAY);
+
+        setViewPosX(0);
+        setViewPosY(0);
+        setViewHeight(3000);
+        setViewWidth(3000);
     }
 
 
@@ -69,6 +78,40 @@ public class GraphView extends View {
     }
 
 
+    public float getViewWidth() {
+        return viewWidth;
+    }
 
+    public void setViewWidth(float viewWidth) {
+        this.viewWidth = viewWidth;
+    }
 
+    public float getViewHeight() {
+        return viewHeight;
+    }
+
+    public void setViewHeight(float viewHeight) {
+        this.viewHeight = viewHeight;
+    }
+
+    public void setViewSize(float width, float height){
+        setViewWidth(width);
+        setViewHeight(height);
+    }
+
+    public float getViewPosX() {
+        return viewPosX;
+    }
+
+    public void setViewPosX(float viewPosX) {
+        this.viewPosX = viewPosX;
+    }
+
+    public float getViewPosY() {
+        return viewPosY;
+    }
+
+    public void setViewPosY(float viewPosY) {
+        this.viewPosY = viewPosY;
+    }
 }
