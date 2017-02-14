@@ -26,6 +26,8 @@ public class InputSelectedState implements InputState {
 
                 case MotionEvent.ACTION_MOVE:
                     // change the inputstate to a move event
+                    c.xOffset = event.getX() - c.selected.getX();
+                    c.yOffset = event.getY() - c.selected.getY();
                     c.isMoveState = true;
                     c.state = new InputMoveState();
                     break;

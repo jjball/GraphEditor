@@ -15,6 +15,8 @@ public class GraphViewController implements View.OnTouchListener, View.OnLongCli
     boolean isMoveState = false;
     InputState state;
 
+    float xOffset, yOffset;
+
     public GraphViewController(){
         subscribers = new ArrayList<>();
         state = new InputReadyState();
@@ -30,6 +32,15 @@ public class GraphViewController implements View.OnTouchListener, View.OnLongCli
 
     public boolean onTouch(View v, MotionEvent event){
         //state = new InputReadyState();
+//        if(event.getAction() == MotionEvent.ACTION_DOWN){
+//            System.out.println("ACTION_DOWN event");
+//        }
+//        else if(event.getAction() == MotionEvent.ACTION_UP){
+//            System.out.println("ACTION_UP event");
+//        }
+//        else if(event.getAction() == MotionEvent.ACTION_MOVE){
+//            System.out.println("ACTION_MOVE event");
+//        }
         state.handleTouch(this, event);
         return false;
     }

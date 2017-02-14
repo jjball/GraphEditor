@@ -18,7 +18,7 @@ public class InputMoveState implements InputState {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                c.model.moveVertex(c.selected, event.getX(), event.getY());
+                c.model.moveVertex(c.selected, event.getX() - c.xOffset, event.getY() - c.yOffset);
                 c.notifySubscribers();
                 break;
         }
