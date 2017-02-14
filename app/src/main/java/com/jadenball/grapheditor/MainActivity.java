@@ -18,11 +18,18 @@ public class MainActivity extends AppCompatActivity {
         GraphModel model = new GraphModel();
         GraphViewController controller = new GraphViewController();
 
+
         // connections
         controller.setModel(model);
         gView.setModel(model);
+        miniGraphView.setModel(model);
+
         model.setView(gView);
+        miniGraphView.setParentView(gView);
+
         gView.setController(controller);
+        miniGraphView.setController(controller);
+
         controller.addSubscriber(miniGraphView);
         controller.addSubscriber(gView);
         //controller.setView(gView);
@@ -31,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         // set up event handling
         gView.setOnTouchListener(controller);
         gView.setOnLongClickListener(controller);
+
+
+        // set up widths/heights of views
+        miniGraphView.setViewSize(400, 400);
+        gView.setViewSize(3000, 3000);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
