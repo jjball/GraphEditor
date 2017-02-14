@@ -2,6 +2,7 @@ package com.jadenball.grapheditor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // MVC
+        MiniGraphView miniGraphView = new MiniGraphView(this);
         GraphView gView = new GraphView(this);
         GraphModel model = new GraphModel();
         GraphViewController controller = new GraphViewController();
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         gView.setModel(model);
         model.setView(gView);
         gView.setController(controller);
+        controller.addSubscriber(miniGraphView);
         controller.addSubscriber(gView);
         //controller.setView(gView);
 
@@ -29,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
         gView.setOnTouchListener(controller);
         gView.setOnLongClickListener(controller);
 
-        setContentView(gView);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.addView(miniGraphView, 400, 400);
+        linearLayout.addView(gView);
+
+        setContentView(linearLayout);
 
 
     }
