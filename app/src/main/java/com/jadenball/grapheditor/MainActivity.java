@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.addView(miniGraphView, 400, 400);
+        linearLayout.addView(miniGraphView, new LinearLayout.LayoutParams(400, 400));
         linearLayout.addView(gView);
 
         setContentView(linearLayout);
