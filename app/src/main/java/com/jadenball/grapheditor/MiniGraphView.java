@@ -51,15 +51,21 @@ public class MiniGraphView extends View {
     }
 
     public void onDraw(Canvas canvas){
+        // Creating rectangle to show where the view is situated in relation to the entire view
         myPaint.setColor(Color.GRAY);
         canvas.drawRect(parentView.getViewPosX() * scale, parentView.getViewPosY() * scale,
                 parentView.getWidth() * scale, parentView.getHeight() * scale, myPaint);
 
+
+        // Creating all of the edges that are connecting vertices
         for(Edge e : model.edges){
-            myPaint.setColor(Color.BLACK);
-            canvas.drawLine(e.getX1() * scale, e.getY1() * scale, e.getX2() * scale, e.getY2()* scale, myPaint);
+            if(e.getV2() != null) {
+                myPaint.setColor(Color.BLACK);
+                canvas.drawLine(e.getX1() * scale, e.getY1() * scale, e.getX2() * scale, e.getY2() * scale, myPaint);
+            }
         }
 
+        // creating all the vertices
         for(Vertex v : model.vertices){
             myPaint.setColor(Color.BLUE);
             canvas.drawCircle(v.x * scale, v.y * scale, v.getRadius() * scale, myPaint);
