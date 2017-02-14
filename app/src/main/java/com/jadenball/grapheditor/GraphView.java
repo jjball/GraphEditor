@@ -17,6 +17,7 @@ public class GraphView extends View {
         super(c);
         myPaint = new Paint();
         myPaint.setColor(Color.BLUE);
+        myPaint.setStrokeWidth(5);
         this.setBackgroundColor(Color.GRAY);
     }
 
@@ -51,7 +52,7 @@ public class GraphView extends View {
             else{
                 myPaint.setColor(Color.BLUE);
             }
-            canvas.drawCircle(v.x, v.y, 50, myPaint);
+            canvas.drawCircle(v.x, v.y, v.getRadius(), myPaint);
 
             myPaint.setColor(Color.WHITE);
             myPaint.setTextSize(40);
@@ -60,7 +61,7 @@ public class GraphView extends View {
             if (v == controller.longSelected){
                 myPaint.setColor(Color.BLACK);
                 myPaint.setStyle(Paint.Style.STROKE);
-                canvas.drawCircle(v.x, v.y, 50, myPaint);
+                canvas.drawCircle(v.x, v.y, v.getRadius(), myPaint);
                 myPaint.setStyle(Paint.Style.FILL);
             }
 

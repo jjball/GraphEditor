@@ -6,6 +6,7 @@ public class Vertex {
     float x, y;
     String vertexText;
     boolean longPressed = false;
+    float radius = 65;
 
     public Vertex(float x, float y){
         this.x = x;
@@ -14,7 +15,7 @@ public class Vertex {
 
 
     public boolean contains(float xcoord, float ycoord){
-        return xcoord >= this.x - 50 && xcoord <= this.x + 50 && ycoord >= this.y - 50 && ycoord <= this.y + 50;
+        return xcoord >= this.x - radius && xcoord <= this.x + radius && ycoord >= this.y - radius && ycoord <= this.y + radius;
     }
 
 
@@ -40,5 +41,13 @@ public class Vertex {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    public float getRadius(){
+        return radius;
+    }
+
+    public void setRadius(float newRadius){
+        radius = newRadius;
     }
 }
