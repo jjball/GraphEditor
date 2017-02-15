@@ -16,8 +16,8 @@ public class InputPrepareState implements InputState {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                // change the inputstate back to ready, don't create a circle
-                c.state = new InputReadyState();
+                // user is navigating the canvas
+                c.state = new InputScreenDragState();
                 break;
 
 
