@@ -17,6 +17,8 @@ public class InputPrepareState implements InputState {
 
             case MotionEvent.ACTION_MOVE:
                 // user is navigating the canvas
+                c.viewOffsetX = event.getX() - c.getxPos();
+                c.viewOffsetY = event.getY() - c.getyPos();
                 c.state = new InputScreenDragState();
                 break;
 
