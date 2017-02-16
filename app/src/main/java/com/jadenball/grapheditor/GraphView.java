@@ -39,7 +39,6 @@ public class GraphView extends View {
 
     public void setController(GraphViewController g){
         controller = g;
-        System.out.println(getHeight());
     }
 
     public void modelChanged(){
@@ -47,7 +46,6 @@ public class GraphView extends View {
     }
 
     public void onDraw(Canvas canvas){
-        System.out.println("GraphView pos: " + getViewPosX() + ", " + getViewPosY());
         calculatePosition();
 
         float cx = controller.getxPos();
@@ -85,7 +83,6 @@ public class GraphView extends View {
         if(firstTimeDrawing && controller != null){
             controller.setMaxHeight(viewHeight - getMeasuredHeight());
             controller.setMaxWidth(viewWidth - getMeasuredWidth());
-            System.out.println(getWidth() + ", " + getHeight());
             firstTimeDrawing = false;
         }
         setViewPosX(controller.getxPos());
