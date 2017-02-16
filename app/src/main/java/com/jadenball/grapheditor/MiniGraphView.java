@@ -7,13 +7,29 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
+
+/**
+ * A mini graph view that replicates a normal graph view
+ */
 public class MiniGraphView extends View {
 
     Paint myPaint;
     GraphModel model;
     GraphViewController controller;
+
+    /**
+     * the view that the mini view replicates
+     */
     GraphView parentView;
+
+    /**
+     * the width of the mini view
+     */
     private float viewWidth;
+
+    /**
+     * the height of the mini view
+     */
     private float viewHeight;
 
     /**
@@ -21,6 +37,11 @@ public class MiniGraphView extends View {
      */
     private float scale = 0;
 
+
+    /**
+     * initializes the mini graph view
+     * @param context the context
+     */
     public MiniGraphView(Context context) {
         super(context);
         myPaint = new Paint();
@@ -29,14 +50,19 @@ public class MiniGraphView extends View {
         setViewSize(400, 400);
     }
 
-    public void modelChanged(){
-        invalidate();
-    }
-
+    /**
+     * sets the model for the mini graph view
+     * @param g the model
+     */
     public void setModel(GraphModel g){
         model = g;
     }
 
+
+    /**
+     * sets the controller for the mini graph view
+     * @param g the controller
+     */
     public void setController(GraphViewController g){
         controller = g;
     }
@@ -50,6 +76,10 @@ public class MiniGraphView extends View {
         setScale();
     }
 
+    /**
+     * draws a mini representation of the full graph view
+     * @param canvas the canvas to be drawn on
+     */
     public void onDraw(Canvas canvas){
         // Creating rectangle to show where the view is situated in relation to the entire view
         myPaint.setColor(Color.GRAY);
@@ -76,35 +106,67 @@ public class MiniGraphView extends View {
         }
     }
 
+    /**
+     * gets the views width
+     * @return the views width
+     */
     public float getViewWidth() {
         return viewWidth;
     }
 
+    /**
+     * sets the views width
+     * @param viewWidth the new width
+     */
     public void setViewWidth(float viewWidth) {
         this.viewWidth = viewWidth;
     }
 
+    /**
+     * gets the views height
+     * @return the views height
+     */
     public float getViewHeight() {
         return viewHeight;
     }
 
+    /**
+     * sets the views height
+     * @param viewHeight the new height
+     */
     public void setViewHeight(float viewHeight) {
         this.viewHeight = viewHeight;
     }
 
+    /**
+     * sets the size of the view
+     * @param width the new width
+     * @param height the new height
+     */
     public void setViewSize(float width, float height){
         setViewWidth(width);
         setViewHeight(height);
     }
 
+    /**
+     * manually sets the scale if needed, as this is already set when adding the main graph view
+     * @param newScale the new scale of the mini view compared to the main graph view
+     */
     public void setScale(float newScale){
         scale = newScale;
     }
 
+    /**
+     * sets the scale in relation the the parent graph view
+     */
     private void setScale(){
         scale = viewWidth / parentView.getViewWidth();
     }
 
+    /**
+     * gets the current scale of the mini view compared to the parent graph view
+     * @return the scale
+     */
     public float getScale(){
         return scale;
     }
