@@ -1,20 +1,17 @@
 package com.jadenball.grapheditor;
 
 
-import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.View;
 
+/**
+ * class InputSelectedState
+ * handles the touch where the user has selected a vertex on the canvas
+ */
 public class InputSelectedState implements InputState {
 
 
     @Override
     public void handleTouch(GraphViewController c, MotionEvent event) {
-
-
-
-        // if it is not a long press, the user is moving their finger
-        // otherwise, create the edge and move to the long press state
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_UP:

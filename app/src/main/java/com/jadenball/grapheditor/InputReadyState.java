@@ -3,7 +3,10 @@ package com.jadenball.grapheditor;
 import android.view.MotionEvent;
 
 
-
+/**
+ * class InputReadyState
+ * handles the touch where the user is just placing their finger on the canvas
+ */
 public class InputReadyState implements InputState {
 
     @Override
