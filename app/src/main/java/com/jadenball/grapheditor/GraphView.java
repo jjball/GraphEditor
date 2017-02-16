@@ -17,6 +17,8 @@ public class GraphView extends View {
     private float viewPosX;
     private float viewPosY;
 
+    private boolean firstTimeDrawing = true;
+
     public GraphView(Context c) {
         super(c);
         myPaint = new Paint();
@@ -37,21 +39,20 @@ public class GraphView extends View {
 
     public void setController(GraphViewController g){
         controller = g;
+        System.out.println(getHeight());
     }
 
     public void modelChanged(){
         invalidate();
     }
 
-    public void drawEdge(Canvas canvas, Edge e){
-        myPaint.setColor(Color.BLACK);
-        canvas.drawLine(e.getX1(), e.getY1(), e.getX2(), e.getY2(), myPaint);
-    }
-
     public void onDraw(Canvas canvas){
+        System.out.println("GraphView pos: " + getViewPosX() + ", " + getViewPosY());
+        calculatePosition();
+
         for(Edge e : model.edges){
-            drawEdge(canvas, e);
-            //if(e.getV2() == null) model.edges.remove(e);
+            myPaint.setColor(Color.BLACK);
+            canvas.drawLine(e.getX1(), e.getY1(), e.getX2(), e.getY2(), myPaint);
         }
 
         for(Vertex v : model.vertices){
@@ -75,6 +76,17 @@ public class GraphView extends View {
             }
 
         }
+    }
+
+    private void calculatePosition(){
+        if(firstTimeDrawing && controller != null){
+            controller.setMaxHeight(viewHeight - getMeasuredHeight());
+            controller.setMaxWidth(viewWidth - getMeasuredWidth());
+            System.out.println(getWidth() + ", " + getHeight());
+            firstTimeDrawing = false;
+        }
+        setViewPosX(controller.getxPos());
+        setViewPosY(controller.getyPos());
     }
 
 

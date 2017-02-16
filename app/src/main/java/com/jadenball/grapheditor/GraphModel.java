@@ -72,4 +72,12 @@ public class GraphModel {
         view.modelChanged();
     }
 
+    public int getViewWidth(){
+        return view.getWidth();
+    }
+
+    public int getViewHeight(){
+        return view.getHeight();
+    }
+
 }
