@@ -10,7 +10,7 @@ public class InputPrepareState implements InputState {
 
         switch(event.getAction()){
             case MotionEvent.ACTION_UP:
-                c.model.createVertex(event.getX(), event.getY());
+                c.model.createVertex(c.getxPos() + event.getX(), c.getyPos() + event.getY());
                 c.notifySubscribers();
                 c.state = new InputReadyState();
                 break;

@@ -50,9 +50,12 @@ public class GraphView extends View {
         System.out.println("GraphView pos: " + getViewPosX() + ", " + getViewPosY());
         calculatePosition();
 
+        float cx = controller.getxPos();
+        float cy = controller.getyPos();
+
         for(Edge e : model.edges){
             myPaint.setColor(Color.BLACK);
-            canvas.drawLine(e.getX1(), e.getY1(), e.getX2(), e.getY2(), myPaint);
+            canvas.drawLine(e.getX1() - cx, e.getY1() - cy, e.getX2() - cx, e.getY2() - cy, myPaint);
         }
 
         for(Vertex v : model.vertices){
@@ -62,16 +65,16 @@ public class GraphView extends View {
             else{
                 myPaint.setColor(Color.BLUE);
             }
-            canvas.drawCircle(v.x, v.y, v.getRadius(), myPaint);
+            canvas.drawCircle(v.x - cx, v.y - cy, v.getRadius(), myPaint);
 
             myPaint.setColor(Color.WHITE);
             myPaint.setTextSize(40);
-            canvas.drawText(v.getVertexText(), v.x - 20, v.y + 10, myPaint);
+            canvas.drawText(v.getVertexText(), v.x - 20 - cx, v.y + 10 - cy, myPaint);
 
             if (v == controller.longSelected){
                 myPaint.setColor(Color.BLACK);
                 myPaint.setStyle(Paint.Style.STROKE);
-                canvas.drawCircle(v.x, v.y, v.getRadius(), myPaint);
+                canvas.drawCircle(v.x - cx, v.y - cy, v.getRadius(), myPaint);
                 myPaint.setStyle(Paint.Style.FILL);
             }
 

@@ -11,8 +11,8 @@ public class InputReadyState implements InputState {
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 //if on a circle, select
-                if(c.model.contains(event.getX(), event.getY())){
-                    c.selected = c.model.findClick(event.getX(), event.getY());
+                if(c.model.contains(c.getxPos() + event.getX(), c.getyPos() + event.getY())){
+                    c.selected = c.model.findClick(c.getxPos() + event.getX(), c.getyPos() + event.getY());
                     c.notifySubscribers();
                     c.state = new InputSelectedState();
                 }
