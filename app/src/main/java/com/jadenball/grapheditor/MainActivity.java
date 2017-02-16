@@ -1,3 +1,9 @@
+/*
+ * Jaden Ball
+ * jjb465
+ * CMPT381
+ */
+
 package com.jadenball.grapheditor;
 
 import android.support.v7.app.AppCompatActivity;
