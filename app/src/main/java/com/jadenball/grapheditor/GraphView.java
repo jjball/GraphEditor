@@ -1,6 +1,5 @@
 /*
  * Jaden Ball
- * jjb465
  * CMPT381
  */
 
